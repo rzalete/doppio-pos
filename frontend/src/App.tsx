@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLayout from "./components/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
+import Categories from "./pages/admin/Categories";
+import Menu from "./pages/admin/Menu";
 
 function App() {
   const { accessToken } = useAuthStore();
@@ -17,14 +19,11 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
 
-        {/* Admin routes */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminLayout>
-                <Dashboard />
-              </AdminLayout>
+              <AdminLayout><Dashboard /></AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -32,9 +31,7 @@ function App() {
           path="/admin/categories"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminLayout>
-                <div className="text-cream-50">Categories coming soon</div>
-              </AdminLayout>
+              <AdminLayout><Categories /></AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -42,9 +39,7 @@ function App() {
           path="/admin/menu"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminLayout>
-                <div className="text-cream-50">Menu coming soon</div>
-              </AdminLayout>
+              <AdminLayout><Menu /></AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -68,8 +63,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Cashier routes */}
         <Route
           path="/pos"
           element={
