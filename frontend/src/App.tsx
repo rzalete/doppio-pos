@@ -6,6 +6,8 @@ import AdminLayout from "./components/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Categories from "./pages/admin/Categories";
 import Menu from "./pages/admin/Menu";
+import Orders from "./pages/admin/Orders";
+import Users from "./pages/admin/Users";
 
 function App() {
   const { accessToken } = useAuthStore();
@@ -18,7 +20,6 @@ function App() {
           element={<Navigate to={accessToken ? "/dashboard" : "/login"} replace />}
         />
         <Route path="/login" element={<Login />} />
-
         <Route
           path="/dashboard"
           element={
@@ -47,9 +48,7 @@ function App() {
           path="/admin/orders"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminLayout>
-                <div className="text-cream-50">Orders coming soon</div>
-              </AdminLayout>
+              <AdminLayout><Orders /></AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -57,9 +56,7 @@ function App() {
           path="/admin/users"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminLayout>
-                <div className="text-cream-50">Users coming soon</div>
-              </AdminLayout>
+              <AdminLayout><Users /></AdminLayout>
             </ProtectedRoute>
           }
         />
