@@ -6,6 +6,7 @@ from app.api import auth as auth_router
 from app.api import categories as categories_router
 from app.api import products as products_router
 from app.api import users as users_router
+from app.api import orders as orders_router
 
 app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG)
 
@@ -27,3 +28,4 @@ app.include_router(auth_router.router)
 app.include_router(categories_router.router)
 app.include_router(products_router.router)
 app.include_router(users_router.router)
+app.include_router(orders_router.router)
