@@ -3,21 +3,28 @@ import { useAuthStore } from "./stores/auth";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLayout from "./components/AdminLayout";
+import CashierLayout from "./components/CashierLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Categories from "./pages/admin/Categories";
 import Menu from "./pages/admin/Menu";
 import Orders from "./pages/admin/Orders";
 import Users from "./pages/admin/Users";
+import POS from "./pages/cashier/POS";
 
 function App() {
-  const { accessToken } = useAuthStore();
+  const { accessToken, user } = useAuthStore();
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
-          element={<Navigate to={accessToken ? "/dashboard" : "/login"} replace />}
+          element={
+            <Navigate
+              to={accessToken ? (user?.role === "cashier" ? "/pos" : "/dashboard") : "/login"}
+              replace
+            />
+          }
         />
         <Route path="/login" element={<Login />} />
         <Route
@@ -64,7 +71,7 @@ function App() {
           path="/pos"
           element={
             <ProtectedRoute requiredRole="cashier">
-              <div className="text-cream-50 p-8">POS coming soon</div>
+              <CashierLayout><POS /></CashierLayout>
             </ProtectedRoute>
           }
         />
