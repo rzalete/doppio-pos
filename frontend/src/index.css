@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #1C0F07;
+    color: #FAF7F2;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #2C1810;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C9A84C;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .glass-hover {
+    transition: all 0.2s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #C9A84C, #F5C842);
+    color: #1C0F07;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-gold:hover {
+    background: linear-gradient(135deg, #D4A843, #F5C842);
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #FAF7F2;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(201, 168, 76, 0.6);
+    background: rgba(201, 168, 76, 0.1);
+  }
+
+  .input-glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 0.75rem;
+    padding: 0.625rem 1rem;
+    color: #FAF7F2;
+    width: 100%;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .input-glass:focus {
+    border-color: rgba(201, 168, 76, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+  }
+
+  .input-glass::placeholder {
+    color: #A89080;
+  }
+}
